@@ -1,0 +1,401 @@
+---
+title: "Pencils and Erasers, on DNA"
+subtitle: "Genome-wide programmable transcriptional memory by CRISPR-based epigenome editing [@nunez_genome-wide_2021]"
+author: ["<redacted>", "<redacted>", "<redacted>"]
+format: 
+    revealjs:
+      transition: fade
+      theme: sakura.scss
+      slideNumber: true
+csl: american-chemical-society.csl
+bibliography: BMEN6374.bib
+---
+
+## Summary {.smaller}
+
+:::: {.columns}
+::: {.column width="60%"}
+- The author presented a novel mechanism for writing heritable programmable epigenetic memory with higher efficiency than previous dCas9-based systems.
+- The memory can be written using dCas9-guided DNA methylation and transcriptional suppression using the CRISPRoff system and erased using a transactivation domain as in CRISPRon.
+:::
+::: {.column width="40%"}
+![](https://st2.depositphotos.com/1112664/10701/i/950/depositphotos_107010374-stock-photo-a-pencil-sitting-on-a.jpg)
+:::
+::::
+
+![](images/fx1_lrg_p1.jpg)
+
+## Question
+
+:::: {.columns}
+::: {.column width="50%"}
+::: {.incremental}
+- How can we "turn off" a gene?
+  - Change the DNA sequence? [@dalvie_simplified_2022]
+  - Blocks transcription? [@larson_crispr_2013]
+  - Introduce methyltransferase?
+    - TALE [@bernstein_tale-mediated_2015] [^2]
+    - CRISPR-dCas9 [@xu_crisprdcas_2019]
+:::
+:::
+::: {.column width="50%"}
+![](images/crispr-dcas9-applications.jpg)
+:::
+::::
+
+[^2]: Transcription activator-like effectors 
+
+::: {.notes}
+Talk about limited efficiency in all previous methods.
+:::
+
+## Background {.smaller}
+
+### CRISPR-(d)Cas9 [@ran_genome_2013] {style='text-transform: none'} 
+
+
+:::: {.columns}
+::: {.column width="50%"}
+![CRISPR/Cas9 system introduces double-stranded break.](images/crispr_cas9_recover.webp)
+
+- A "dead" Cas9 (dCas9) can be used to target specific DNA sequences without introducing double-stranded breaks.
+:::
+::: {.column width="50%"}
+![CRISPR-dCas9-based epigenome engineering. [@xu_crisprdcas_2019]](images/crispr-dcas9.jpg) 
+:::
+::::
+
+::: {.notes}
+CRISPR/Cas9 is the most widely used genome editing tool.
+It can be used to create double-strand breaks (DSBs) in DNA. 
+These DSBs can be repaired by either non-homologous end joining (NHEJ) or homology-directed repair (HDR). 
+NHEJ is error-prone and can introduce insertions or deletions (indels) at the break site.
+
+CRISPR/dCas9 is a catalytically inactive Cas9 system that can be used to target specific DNA sequences without introducing DSBs.
+The enzyme has been modified to lose its endonuclease activity, but retains its ability to bind to DNA.
+The dCas9 can be fused to various effector domains to achieve gene regulation, epigenome editing, and live-cell imaging.
+
+
+:::
+
+
+## Background
+
+### CRISPRi (CRISPR interference) [@larson_crispr_2013] {style='text-transform: none'}
+
+- Using dCas9 to bind to DNA and prevent TFs from binding to the promoter region and/or block RNA polymerase from transcribing the gene.
+
+![CRISPRi Overview](images/crispri_p1-A.webp)
+
+::: {.notes}
+CRISPRi is a method to achieve temporary gene silencing by binding the dCas9 to the DNA, preventing transcription factors and polymerases from binding.
+
+The silencing effect is not durable and efficiency can be low.
+:::
+
+## New Method - CRISPRoff
+
+:::: {.columns}
+::: {.column width="60%"}
+dCas9 guided DNA methylation _and_ transcriptional suppression (Panel A) to achieve gene silencing that is:
+
+- durable (Panel C)
+- with a wide target window
+- independent on the
+presence of CpG islands.
+:::
+::: {.column width="40%"}
+![](images/gr1_lrg_pA.jpg)
+![](images/gr1_lrg_pC.jpg)
+:::
+::::
+
+::: {.notes}
+
+as a programmable epigenetic memory writer protein that can durably silence gene expression with a wide target window and independent on the presence of CpG islands.
+
+The combination of a DNA methyltransferase and a transcriptional repressor domain is a novel approach which achieves greater efficiency and durability in gene silencing compared to previous methods.
+:::
+
+## Introduction {.smaller}
+
+### CRISPRoff D3A<sup>E765A</sup> Mutant {style='text-transform: none'}
+
+:::: {.columns}
+::: {.column width="50%"}
+- A mutation is introduced to the Dnmt3A protein domain to prevent it from methylating DNA.
+- Creates a CRISPRoff system that is incapable of methylating DNA.
+- Used to compare methylation-dependent and methylation-independent gene silencing.
+:::
+::: {.column width="50%"}
+![](images/gr1_lrg_pA.jpg)
+:::
+::::
+
+
+## Introduction {.smaller}
+
+### CpG islands (CGI)
+
+![Helixitta, CC BY-SA 4.0](./images/CpG_vs_C-G_bp.svg)
+
+- CpG sites are regions of DNA where
+  a cytosine nucleotide is followed by a guanine nucleotide (separated by a phosphate group)
+  along its 5' -> 3' direction.
+- CpG islands are regions with a high frequency of CpG sites.
+  - Typically occur at or near the transcription start site of genes.
+  - Methylation of CpG islands is associated with gene silencing.
+
+::: {.notes}
+
+Note that CpG notation vs. G-C notation is different. CpG refers to the cytosine-guanine dinucleotide, while G-C refers to the guanine-cytosine base pair.
+
+references:
+- https://en.wikipedia.org/wiki/CpG_site
+:::
+
+## Introduction {.smaller}
+
+:::: {.columns}
+::: {.column width="60%"}
+### Chromatin immunoprecipitation sequencing (ChIP-seq) [@johnson_genome-wide_2007] {style='text-transform: none'}
+
+- ChIP-seq analyzes protein interaction with DNA.
+  It is used to identify binding sites of DNA-associated proteins, such as transcription factors, histones, etc.
+- In this study the author used ChIP-seq to identify epigenetic modifications to Histone H3 (H3K9me3) in the genome.
+:::
+::: {.column width="40%"}
+![Jkwchui, CC BY-SA 3.0](images/Chromatin_immunoprecipitation_sequencing_p1.png){style='background-color: white;'}
+:::
+::::
+
+## Introduction {.smaller}
+
+:::: {.columns}
+::: {.column width="60%"}
+### Chromatin immunoprecipitation sequencing (ChIP-seq) [@johnson_genome-wide_2007] {style='text-transform: none'}
+
+- ChIP-seq analyzes protein interaction with DNA.
+  It is used to identify binding sites of DNA-associated proteins, such as transcription factors, histones, etc.
+- In this study the author used ChIP-seq to 
+  identify epigenetic modifications to Histone H3 (H3K9me3) in the genome.
+:::
+::: {.column width="40%"}
+![Jkwchui, CC BY-SA 3.0](images/Chromatin_immunoprecipitation_sequencing_p2.png){style='background-color: white;'}
+:::
+::::
+
+::: {.notes}
+References: 
+- https://en.wikipedia.org/wiki/ChIP_sequencing
+- https://pubmed.ncbi.nlm.nih.gov/17540862/
+:::
+
+## Introduction {.smaller}
+
+### Bisulfite sequencing PCR [@frommer_genomic_1992]
+
+:::: {.columns}
+::: {.column width="50%"}
+![](./images/Wiki_Bisulfite_sequencing_Figure_1_small.png)
+:::
+::: {.column width="50%"}
+- Detects 5-methylcytosine residues in DNA.
+- The method utilizes bisulfite-induced modification of genomic DNA,
+  under conditions whereby cytosine is converted to uracil, but 5-methylcytosine remains nonreactive.
+:::
+::::
+
+- The method can be combined with modern NGS technologies to provide a genome-wide view of DNA methylation patterns.
+
+::: {.notes}
+Treatment of DNA with bisulfite converts cytosine residues to uracil, but leaves 5-methylcytosine residues unaffected. 
+
+references:
+- https://en.wikipedia.org/wiki/Bisulfite_sequencing
+- https://en.wikipedia.org/wiki/Whole_genome_bisulfite_sequencing
+:::
+
+
+## Key Findings {.smaller}
+
+### Epigenome editing using CRISPRoff is highly specific
+
+:::: {.columns}
+::: {.column width="40%"}
+- Using RNAseq, near complete silencing of target genes are observed in comparison between:
+  - Untransfected cells (Panel A)
+  - Cells transfected with non-targeting sgRNA (Panel A-D)
+  - Cells transfected with targeting sgRNA (Panel B-D)
+- No significant off-target effects were observed (Panel A, E).
+:::
+::: {.column width="60%"}
+![Transcriptome of cells with vs. without CRISPRoff (TPM = Transcripts per million)](images/gr2_lrg_pA-E.jpg)
+:::
+::::
+
+::: {.notes}
+Firstly, the author demonstrated that the CRISPRoff system is highly specific in silencing target genes.
+
+The top panels are interesting, it basically plots the transcription level of all genes in the RNAseq. And here on panel A, the author compared completely untransfected cells vs cells that have been transfected with a non-targeting sgRNA, if we see any genes that significantly change in expression (deviate from the diagonal), it must be an off-target effect. But we can see that there are no significant changes in expression. The author also targeted three other genes, ITGB1, CD81 and CD151, and here we can see there are no outliers except in the targeting sgRNA transfected cells.  
+
+The middle panels are plotting the p values for the differential transcription of the genes. This is a more quantitative way to show the same idea, but this time by using p value it is better at comparing the significance of the changes in expression across all transcription levels.
+
+The bottom, panel E is a manhattan plot, which is simply a plot of the p-values on the differential transcription on the y-axis across the whole genome and we can see that the data corroborates with the previous panels, that there is no significant off-target effects and the only significant change in expression is in the target genes.
+:::
+
+## Key Findings {.smaller}
+
+### CRISPRoff can silence genes that lack CGI annotations
+
+:::: {.columns}
+::: {.column width="50%"}
+- CRISPRoff successfully silenced 4 out of 5 non-CGI genes. (Panel C)
+- CRISPRoff of genes lacking CGIs lead to a more significant decrease in cell growth
+  compared to CRISPRoff mutants in both CGI and non-CGI genes. (Panel A)
+- The silencing of non-CGI genes are also methylation-dependent. (Panel E)
+  - Hypothesis: CALD are not silenced due to complete lack of CpG sites.
+:::
+::: {.column width="50%"}
+::: {layout="[[1,1], [1]]"}
+![Growth of CRISPRoff vs. mutant cells](images/gr5_lrg-pA.jpg)
+
+![Silencing of non-CGI genes](images/gr5_lrg-pC.jpg)
+
+![Methylation of non-CGI genes](images/gr5_lrg-pE.jpg)
+:::
+:::
+::::
+
+::: {.notes}
+The author also demonstrated another advantage of the CRISPRoff system, that it can silence genes that lack CpG island annotations.
+
+Let's look at panel C first. The author selected 5 genes that lack CpG islands and tested the CRISPRoff active and mutant systems on them. The CRISPRoff system successfully silenced 4 out of 5 genes, and the mutant system did not silence any of the genes. This shows that the CRISPRoff system is capable of silencing genes that lack CpG islands in a methylation-dependent manner. Which is corroborated by the bisulfite sequencing data in panel E, where we can see that the CpG sides in non-CGI genes are more methylated after CRISPRoff treatment.
+
+Last let's look at panel A, this plot is showing a lot. This is a genome-wide screen of the effectiveness of CRISPRoff in silencing genes by making an sgRNA library targeting around 20k genes and measuring the growth defect of the cells. And the Y axis is the phenotype score for the active CRISPRoff system and the X axis is the phenotype score for the mutant system. So on the diagnal like is where methylation independent gene silencing would be, and down on the Y axis is where the methylation dependent gene silencing would be. And we can see that we have two observations: (1) the CRISPRoff system is more effective in silencing genes that lack CpG islands compared to the mutant system. (2) CRISPRoff achieved comparable performance between CGI and non-CGI genes.
+:::
+
+## Key Findings {.smaller}
+
+### CRISPRoff can silence genes that lack CGI annotations (cont'd)
+
+- CRISPRoff can silence non-CGI genes durably. (Panel F, G, I)
+- Silencing of non-CGI gene MYL6 is metastable. (Panel H)
+
+![Durability of gene silencing in non-CGI genes](images/gr5_lrg-pF-I.jpg)
+
+::: {.notes}
+Continuing on the discussion the author also validated the durability of the CRISPRoff system in silencing genes that lack CpG islands.
+
+Using the same 3 genes from the previous slide, the author tracked the transcription level of the genes over time after the CRISPRoff treatment. And we can see that the silencing of the genes are durable for panel F and G, but is metastable for panel H. This is interesting because it shows that the CRISPRoff system is capable of durably silencing genes that lack CpG islands, but also that some genes are not durably silenced. This is an interesting observation that the author posed as a future research direction.
+:::
+
+## Key Findings {.smaller}
+
+### CRISPRoff targeting rules
+
+:::: {.columns}
+::: {.column width="50%"}
+- An sgRNA tiling screen was performed.
+  ![](images/gr6_lrg_pA.jpg){style='width: 30%; margin-left: 35%'}
+- CRISPRoff has a wider target window (-500 to +500 bp from TSS[^3]) compared to CRISPRi (-75 to +75 bp from TSS). (Panel E, H)
+- Active sgRNAs are not evenly distributed but instead appear in a periodic pattern. (Panel D, I)
+  - Hypothesis: The periodic pattern is due to the nucleosome positioning.
+
+:::
+::: {.column width="50%"}
+::: {layout="[[1,1],  [1,1]]"}
+
+![](images/gr6_lrg_pE.jpg)
+
+![](images/gr6_lrg_pH.jpg)
+
+![](images/gr6_lrg_pD.jpg)
+
+![](images/gr6_lrg_pI.jpg)
+:::
+:::
+::::
+
+[^3]: Transcription start site
+
+::: {.notes}
+Next topic is the sgRNA design rules for the CRISPRoff system. Similar to the CRISPRi system, the CRISPRoff system requires a well-designed sgRNA to achieve efficient gene silencing. The author performed an sgRNA tiling screen (which is basically a library of all possible combinations) to determine the optimal sgRNA design rules for the CRISPRoff system. On panel E and H we observe that CRISPRoff has a much wider target window compared to CRISPRi, from +-75bp to +-500bp from the transcription start site. This is a significant improvement in the CRISPRoff system, as it allows for more flexibility in the design of the sgRNA.
+
+The author also observed that the distribution of active sgRNAs are not a simple V-shaped distribution, but instead appear in a periodic pattern. This is an interesting observation that the author hypothesized is due to the nucleosome positioning.
+:::
+
+## Key Findings {.smaller}
+
+### CRISPRon can turn on silenced genes
+
+![](images/gr3_lrg_pF.jpg){style='width: 50%; margin-left: 25%'}
+
+:::: {.columns}
+::: {.column width="60%"}
+- Two constructs are used to create CRISPRon (Panel F). 
+  - The first is a dCas9-TET1 fusion protein (TETv4) that demethylates DNA. (Panel A). 
+  - The second is a sequence of transactivator domains fused with a MS2 coat protein (MCP) (Panel E). MS2 coat protein binds to the MS2 loops on the sgRNA achieving recruitment of the transactivator domains to the target gene (Panel F).
+
+:::
+::: {.column width="40%"}
+![](images/gr3_lrg_pA.jpg)
+
+![](images/figs4_lrg_pE.jpg)
+
+:::
+::::
+
+::: {.notes}
+Last but not least the author also built a new system called CRISPRon, which is capable of reactivating previously silenced genes. As illustrated in panel A and F, the CRISPRon system is built by fusing dCAS9 with TET1 (methylcytosine dioxygenase) separated by a linker sequence. The author called this whole construct TETV4. The author also co-expressed the TETv4 with various transactivator ribonucleoproteins to create the CRISPRon system. If we look closer on panel F, the sgRNA has two MS2 aptamers that can recruit the transactivator ribonucleoproteins though the MS2 coat protein.
+
+Then we may wonder why we need two constructs to achieve gene reactivation. The author actually tested them one-by-one, let's look at the next slide.
+:::
+
+## Key Findings {.smaller}
+
+### CRISPRon can turn on silenced genes (cont'd)
+
+![](images/figs4_lrg_pG-H.jpg){style='width: 50%; margin-left: 25%'}
+
+
+:::: {.columns}
+::: {.column width="60%"}
+- Reactivation of genes is DNA-demethylation dependent (panel G, H, top).
+- TETv4 alone is not effective in reactivating previously silenced genes (Panel G, right).
+- In summary, both TETv4 and transactivator are necessary for most effective reactivation of genes.
+:::
+::: {.column width="40%"}
+
+![](images/gr3_lrg_pG.jpg) {style='width: 50%; margin-left: 25%'}
+
+:::
+::::
+
+::: {.notes}
+Firstly let's look at the top panel G, where the author tested TETv4 alone and found that with only TETv4 it is not effective in reactivating previously silenced genes, and the p65-Rta transactivator combination seems to perform the best. 
+Then let's look at the bottom panel G and H, the author tested the importance of TETv4 by observing the durability of gene reactivation using transactivator domains co-expressed with TETv4 vs. just a dCas9. And we can see that although some transactivator-alone systems are capable of reactivating genes for a short period of time, the most durable reactivation is achieved by co-expressing the TETv4 with the transactivator.
+:::
+
+## Next Steps
+
+::: {.incremental}
+- Optimization of the sgRNA design rules for CRISPRoff.
+- Why are some genes not durably silenced?
+- More research into the functional effects of artifically introduced DNA methylation.
+:::
+
+## Future Directions of CRISPRon {.smaller style="text-transform: none"}
+
+- What is the efficacy of CRISPRon on genes that are naturally methylated?
+  - Design sgRNAs to target several genes that are naturally methylated.
+    Use a library tiling screen to help determine the optimal sgRNA design.
+  - Use bisulfite sequencing to determine the methylation status of the genes,
+    before and after CRISPRon, with and without using transactivators.
+  - Measure the differential transcription of the genes using RNAseq.
+  - Measure differential protein production using a tagged protein and Western blotting or a fluorescent protein and flow cytometry.
+
+## References {.smaller}
+
+::: {#refs}
+:::
